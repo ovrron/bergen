@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen
+        name="big_size">8pt</dimen>
+    <dimen
+        name="normal_size">6pt</dimen>
+    <dimen
+        name="medium_size">4.5pt</dimen>
+    <dimen
+        name="small_size">4pt</dimen>
+    <dimen
+        name="supersmall_size">3pt</dimen>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/linearLayout1" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	>
+	<RelativeLayout 
+		android:id="@+id/linearLayout2" 
+		android:layout_width="fill_parent" 
+		android:layout_height="30dip">
+		<TextView 
+			android:text="TextView" 
+			android:id="@+id/textViewHeader" 
+			android:layout_height="wrap_content" 
+			android:textSize="@dimen/big_size" 
+			android:textStyle="bold" 
+			android:layout_marginLeft="5dip" 
+			android:layout_marginRight="5dip" android:layout_centerInParent="true" android:layout_width="wrap_content">
+		</TextView>
+	</RelativeLayout>	
+	<ScrollView
+		android:id="@+id/ScrollViewDetalj" 
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" 
+		android:scrollbars="vertical"
+		android:layout_weight="90"
+		>
+		<TableLayout 
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent" 
+			android:stretchColumns="*"
+			android:id="@+id/TableLayout_Detalj"
+			>
+			
+		</TableLayout>
+	</ScrollView>
+	<LinearLayout 
+		android:id="@+id/linearLayout2" 
+		android:layout_width="fill_parent" 
+		android:layout_height="50dip" 
+		android:orientation="vertical"
+		>
+		<TextView 
+			android:text="TextView" 
+			android:id="@+id/textViewCredit" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="5dip" 
+			android:layout_marginRight="5dip" 
+			android:textSize="@dimen/medium_size" android:autoLink="web">
+		</TextView>
+	</LinearLayout>
+</LinearLayout>
