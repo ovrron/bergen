@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, main!</string>
     <string name="app_name">Hva skjer i Bergen</string>
+    
+    <string name="start_button_parking">Ledig parkering</string>
+    <string name="start_button_weather">Vær</string>
+    
+    <string name="parking_toast_bad">Nei og nei! </string>
+    <string name="parking_wait_dialog_title">Laster siden</string>
+    <string name="parking_wait_dialog_message">Henter data fra bergensentrum.no</string>
+    <string name="parking_url">http://bergensentrum.no/mobil/</string>
+	<string name="parking_sms_question_title">Det ser ikke ut som du har nettilgang.</string>
+    <string name="parking_sms_question_message">Vil du motta informasjon om parkering i Bergen sentrum akkurat nå på sms isteden?\nTjenesten koster kr. 3,-</string>
+    <string name="parking_sms_question_positive">Ja</string>
+    <string name="parking_sms_question_negative">Nei</string>
+    <string name="parking_sms_no">90177797</string>
+    <string name="parking_sms_message">P</string>
+    
+    <string name="weather_url">http://www.yr.no/sted/Norge/Hordaland/Bergen/Bergen/varsel.xml</string>
+	<string name="weather_no_connection_title">Det ser ikke ut som du har nettilgang.</string>
+    <string name="weather_no_connection_message">Avbryter</string>
+    <string name="weather_no_connection_positive">OK</string>
+    
 </resources>

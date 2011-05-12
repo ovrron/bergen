@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <Button 
+    	android:id="@+id/buttonParking" 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:text="@string/start_button_parking" 
+    	android:layout_marginTop="20dip" 
+    	android:layout_marginLeft="5dip" 
+    	android:layout_marginRight="5dip"
+    	android:drawableRight="@drawable/bergensentrum_logo" 
+    	android:background="@drawable/button_background"
+    	android:textColor="#ffffff" 
+    	android:textSize="20dip"
+    	>
+    </Button>
+    <Button 
+    	android:id="@+id/buttonWeather" 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:text="@string/start_button_weather" 
+    	android:layout_marginTop="20dip" 
+    	android:layout_marginLeft="5dip" 
+    	android:layout_marginRight="5dip"
+    	android:drawableRight="@drawable/yr_logo" 
+    	android:background="@drawable/button_background"
+    	android:textColor="#ffffff" 
+    	android:textSize="20dip"
+    	>
+    </Button>
+
+</LinearLayout>

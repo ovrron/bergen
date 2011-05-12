@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="blue">#8EA9E8</color>
+<color name="red">#DC7272</color>
+<color name="background_even">#000000</color>
+<color name="background_odd">#151515</color>
+<color name="background_title">#0A1B2A</color>
+<color name="text_online">#ACFA58</color>
+<color name="text_offline">#D8D8D8</color>
+</resources>
