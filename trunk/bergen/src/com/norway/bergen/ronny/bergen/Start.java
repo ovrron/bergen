@@ -64,7 +64,6 @@ public class Start extends Activity {
 			}
 		});
     	
-    	
     	Button buttonWeather = (Button) findViewById(R.id.buttonWeather);
     	buttonWeather.setOnClickListener(new OnClickListener() {
 			
@@ -85,7 +84,6 @@ public class Start extends Activity {
 			            }
 			        };
 					
-					//Oppretter dialog med spørsmål om du vil avslutte
 					AlertDialog.Builder builder = new AlertDialog.Builder(Start.this);
 					builder.setTitle(getResources().getString(R.string.weather_no_connection_title));
 					builder.setMessage(getResources().getString(R.string.weather_no_connection_message));
@@ -98,5 +96,111 @@ public class Start extends Activity {
 			}
 		});
  
+    	Button buttonCinema = (Button) findViewById(R.id.buttonCinema);
+    	buttonCinema.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(ipAddress!=null) {
+					startActivity(new Intent(v.getContext(),Cinema.class));	
+				}
+				else {
+					//Lytter for dialogknappene
+					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+			            public void onClick(DialogInterface dialog, int which) {
+			                switch (which) {
+			                	//Bruker har valgt å avslutte spillet
+			                	case DialogInterface.BUTTON_POSITIVE:
+			                		break;
+			                }
+			            }
+			        };
+					
+					AlertDialog.Builder builder = new AlertDialog.Builder(Start.this);
+					builder.setTitle(getResources().getString(R.string.weather_no_connection_title));
+					builder.setMessage(getResources().getString(R.string.weather_no_connection_message));
+					builder.setPositiveButton(getResources().getString(R.string.weather_no_connection_positive), dialogClickListener);
+					AlertDialog dialog = builder.create();
+					dialog.setIcon(R.drawable.damn_icon);
+					dialog.show();
+				}
+				
+			}
+		});    	
+    	
+    	Button buttonConcert = (Button) findViewById(R.id.buttonConcerts);
+    	buttonConcert.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(ipAddress!=null) {
+					startActivity(new Intent(v.getContext(),Concert.class));	
+				}
+				else {
+					//Lytter for dialogknappene
+					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+			            public void onClick(DialogInterface dialog, int which) {
+			                switch (which) {
+			                	//Bruker har valgt å avslutte spillet
+			                	case DialogInterface.BUTTON_POSITIVE:
+			                		break;
+			                }
+			            }
+			        };
+					
+					AlertDialog.Builder builder = new AlertDialog.Builder(Start.this);
+					builder.setTitle(getResources().getString(R.string.weather_no_connection_title));
+					builder.setMessage(getResources().getString(R.string.weather_no_connection_message));
+					builder.setPositiveButton(getResources().getString(R.string.weather_no_connection_positive), dialogClickListener);
+					AlertDialog dialog = builder.create();
+					dialog.setIcon(R.drawable.damn_icon);
+					dialog.show();
+				}
+				
+			}
+		});  
+
+    	
+    	Button buttonPlay = (Button) findViewById(R.id.buttonPlay);
+    	buttonPlay.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(ipAddress!=null) {
+					startActivity(new Intent(v.getContext(),Play.class));	
+				}
+				else {
+					//Lytter for dialogknappene
+					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+			            public void onClick(DialogInterface dialog, int which) {
+			                switch (which) {
+			                	//Bruker har valgt å avslutte spillet
+			                	case DialogInterface.BUTTON_POSITIVE:
+			                		break;
+			                }
+			            }
+			        };
+					
+					AlertDialog.Builder builder = new AlertDialog.Builder(Start.this);
+					builder.setTitle(getResources().getString(R.string.weather_no_connection_title));
+					builder.setMessage(getResources().getString(R.string.weather_no_connection_message));
+					builder.setPositiveButton(getResources().getString(R.string.weather_no_connection_positive), dialogClickListener);
+					AlertDialog dialog = builder.create();
+					dialog.setIcon(R.drawable.damn_icon);
+					dialog.show();
+				}
+				
+			}
+		});  
+
+    	Button buttonTaxi = (Button) findViewById(R.id.buttonTaxi);
+    	buttonTaxi.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(v.getContext(),Taxi.class));	
+			}
+		});    	
+
     }
 }
