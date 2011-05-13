@@ -8,7 +8,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-public class Parking extends Activity {
+public class Concert extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,9 +19,9 @@ public class Parking extends Activity {
         WebView webView = (WebView) findViewById(R.id.webView1);
         webView.getSettings().setJavaScriptEnabled(true);
 
-        final ProgressDialog waitDialog = new ProgressDialog(Parking.this);
-        waitDialog.setTitle(R.string.parking_wait_dialog_title);
-        waitDialog.setMessage(getResources().getString(R.string.parking_wait_dialog_message));
+        final ProgressDialog waitDialog = new ProgressDialog(Concert.this);
+        waitDialog.setTitle(R.string.play_wait_dialog_title);
+        waitDialog.setMessage(getResources().getString(R.string.play_wait_dialog_message));
         webView.setWebChromeClient(new WebChromeClient() {
           public void onProgressChanged(WebView view, int progress) {
         	  if(progress==100) {
@@ -38,9 +38,9 @@ public class Parking extends Activity {
         });
         webView.setWebViewClient(new WebViewClient() {
           public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-        	  Toast.makeText(getBaseContext(), getResources().getString(R.string.parking_toast_bad) + description, Toast.LENGTH_LONG).show();
+        	  Toast.makeText(getBaseContext(), getResources().getString(R.string.concert_toast_bad) + description, Toast.LENGTH_LONG).show();
           }
         });
-        webView.loadUrl(getResources().getString(R.string.parking_url));
+        webView.loadUrl(getResources().getString(R.string.concert_url));
     }
 }
