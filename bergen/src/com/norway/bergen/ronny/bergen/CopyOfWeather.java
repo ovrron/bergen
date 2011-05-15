@@ -21,12 +21,12 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Window;
 import android.widget.Button;
@@ -34,14 +34,25 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.norway.bergen.ronny.bergen.helper.ForeCast;
-import com.norway.bergen.ronny.bergen.helper.ForeCastDay;
-import com.norway.bergen.ronny.bergen.helper.ForeCastDetail;
-
-public class Weather extends Activity 
+public class CopyOfWeather extends Activity 
 {	
+	String placeType = null;
+	String placeName = null;
+	String placeCountry = null;
+	String placeTimezone = null;
+	String placeAltitude = null;
+	String placeLatitude = null;
+	String placeLongitude = null;
+
+	String lastUpdated = null;
+	String nextUpdate = null;
+
+	String sunRise = null;
+	String sunSet = null;
+
+	String creditText = null;
+	String creditUrl = null;
 	
     private float textSizeNormal;
     private float textSizeSmall;
@@ -50,6 +61,7 @@ public class Weather extends Activity
     
 	//Antall linjer i detaljtabellen, brukes for å kunne vise ulik bakgrunn på par-/oddetallslinjene
 	private int antallDetaljRader = 0;
+	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -65,26 +77,62 @@ public class Weather extends Activity
         
         TableLayout detaljTable = (TableLayout) findViewById(R.id.TableLayout_Detalj);
     	CommunicationTask comTask = new CommunicationTask();
-        comTask.execute(this, detaljTable, getResources().getString(R.string.weather_url));
-        //hentVarsel(getResources().getString(R.string.weather_url), detaljTable);
-        //setValues();
+        //comTask.execute(detaljTable, getResources().getString(R.string.weather_url));
+        hentVarsel(getResources().getString(R.string.weather_url), detaljTable);
+        setValues();
+    }
+    
+    private void setValues()
+    {
+        Button header = (Button) findViewById(R.id.buttonHeader);
+        header.setText(getResources().getText(R.string.start_button_weather) + " i " + placeName);
+        
+//    	TextView textViewHeader = (TextView) findViewById(R.id.textViewHeader);
+//    	textViewHeader.setText("Værvarsel for " + placeName);
+    	Date dato = tilDato(lastUpdated,false);
+    	Date next = tilDato(nextUpdate,false);
+    	
+    	TextView textViewCredit = (TextView) findViewById(R.id.textViewCredit);
+    	textViewCredit.setText(creditText + ".\n"  +creditUrl + "\nSist oppdatert " + dato.toLocaleString() + ".\nNeste oppdatering tilgjengelig " + next.toLocaleString() + ".");  
+    	Pattern pattern = Pattern.compile(creditUrl);
+    	Linkify.addLinks(textViewCredit, pattern, "http://");
+    	
+    	
+//    	placeName
+//    	placeType
+//    	placeCountry
+//    	placeTimezone
+//    	placeAltitude
+//    	placeLatitude
+//    	placeLongitude
+//
+//    	lastUpdated
+//    	nextUpdate
+//
+//    	sunRise
+//    	sunSet
+//
+//    	creditText
+//    	creditUrl
     }
     
     
-    
-    private class CommunicationTask extends AsyncTask<Object, Object, Boolean> {
+    private class CommunicationTask extends AsyncTask<Object, String, Boolean> {
 
-    	Context context;
-    	ProgressDialog waitDialog = new ProgressDialog(Weather.this);
+    	ProgressDialog waitDialog = new ProgressDialog(CopyOfWeather.this);
     	TableLayout detaljTable;
-    	ForeCast foreCast;
 
+        @Override
+        protected void onProgressUpdate(String... values)
+        {
+        	//setValues();
+        }
+        
 		@Override
 		protected Boolean doInBackground(Object... params)
 		{
-			context = (Context) params[0];
-			detaljTable = (TableLayout) params[1];
-			publishProgress(hentVarsel((String)params[2]));
+			detaljTable = (TableLayout) params[0];
+			publishProgress(hentVarsel((String)params[1], detaljTable));
 			
 			return null;
 		}
@@ -104,196 +152,20 @@ public class Weather extends Activity
             waitDialog.show();
 
         }
-
-        @Override
-        protected void onProgressUpdate(Object... values)
-        {
-        	if(values[0]!=null) {
-        		foreCast = (ForeCast) values[0];
-        		detaljTable.removeAllViews();
-        		setValues();
-        	}
-        }
-        
-        
-        private void setValues()
-        {
-            Button header = (Button) findViewById(R.id.buttonHeader);
-            header.setText(getResources().getText(R.string.start_button_weather) + " i " + foreCast.getPlaceName());
-            
-        	Date dato = tilDato(foreCast.getLastUpdated(),false);
-        	Date next = tilDato(foreCast.getNextUpdate(),false);
-        	
-        	TextView textViewCredit = (TextView) findViewById(R.id.textViewCredit);
-        	textViewCredit.setText(foreCast.getCreditText() + ".\n"  +foreCast.getCreditUrl() + "\nSist oppdatert " + dato.toLocaleString() + ".\nNeste oppdatering tilgjengelig " + next.toLocaleString() + ".");  
-        	Pattern pattern = Pattern.compile(foreCast.getCreditUrl());
-        	Linkify.addLinks(textViewCredit, pattern, "http://");
-        	
-        	for(ForeCastDay day:foreCast.getDays()) {
-        		String date = day.getDate().toLocaleString();
-        		date = date.substring(0, date.length()-8).trim();
-        		leggTilDetaljOverskrift(day.getDay() + ", " + date, detaljTable);
-        		for(ForeCastDetail detail:day.getDetails()) {
-        			leggTilDetaljLinje(detaljTable, detail.getWhen()+"\n"+detail.getFromTime()+"-"+detail.getToTime() , detail.getPeriod(), detail.getSymbol(), detail.getTemperature(), detail.getRain(), detail.getWindSpeedName()+"\n"+detail.getWindSpeed()+"\n"+detail.getWindDirection());
-        		}
-        	}
-        }
-
-        
-        /**
-         * Legger til en linje i detaljert v�rdata tab'en
-         * @param tab
-         * @param naarPaaDagen
-         * @param periode
-         * @param symbol
-         * @param temperatur
-         * @param nedbør
-         * @param vind
-         */
-        private void leggTilDetaljLinje(TableLayout tab, String naarPaaDagen, int periode, int symbol, 
-        		String temperatur, String nedbør, String vind) 
-        {
-        	//Oppretter en ny rad
-        	TableRow newRow = new TableRow(context);
-        	
-        	//id til symbolgrafikk
-        	int id = 0;
-        	//øker antall rader med 1
-        	antallDetaljRader++;
-        	
-        	//Legger bakgrunnsfarge på raden
-        	if((antallDetaljRader % 2) == 0)
-        	{
-        		newRow.setBackgroundColor(getResources().getColor(R.color.background_even));
-        	}
-        	else
-        	{
-        		newRow.setBackgroundColor(getResources().getColor(R.color.background_odd));
-        	}
-        	
-        	/*
-        	 * Når på dagen
-        	 */
-        	TextView textView = new TextView(context);
-            textView.setTextSize(textSizeSmall);
-            //textView.setTypeface(null,Typeface.BOLD);
-            textView.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
-            //CENTER_VERTICAL fungerer ikke, blir nødt til å legge på et linjeskift:
-            textView.setText(naarPaaDagen);
-            newRow.addView(textView);
-            
-            /*
-             * Symbol (bilde)
-             */
-            //Forsøker å beregne navn på bildefil
-        	String drawableName = String.valueOf(symbol);
-        	String drawableNamePlus = ""; 
-        	if(symbol<10)
-        	{
-        		drawableName = "0"+drawableName;
-        	}
-        	if(periode==0 || periode==3)
-        	{
-        		drawableNamePlus = "n"+drawableName;
-        	}
-        	else
-        	{
-        		drawableNamePlus = "d"+drawableName;
-        	}
-        	id = getResources().getIdentifier(drawableNamePlus, "drawable", "com.norway.bergen.ronny.bergen");
-        	if(id==0)
-        	{
-        		drawableNamePlus = "f"+drawableName;
-        		id = getResources().getIdentifier(drawableNamePlus, "drawable", "com.norway.bergen.ronny.bergen");
-        	}
-        	
-        	if(id!=0)
-        	{
-            	ImageView imageView = new ImageView(context);
-            	imageView.setImageResource(id);
-            	
-            	newRow.addView(imageView);
-        	}
-            
-            /*
-             * Temperatur
-             */
-            textView = new TextView(context);
-            textView.setTextSize(textSizeMedium);
-            textView.setTypeface(null,Typeface.BOLD);
-            int temp = Integer.valueOf(temperatur);
-            if(temp<1)
-            {
-            	textView.setTextColor(getResources().getColor(R.color.blue));
-            }
-            else
-            {
-            	textView.setTextColor(getResources().getColor(R.color.red));
-            }
-            textView.setText("\n"+temperatur+"\u00B0");
-            textView.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
-            newRow.addView(textView);
-            
-            
-            /*
-             * Nedbør
-             */
-        	textView = new TextView(context);
-            textView.setTextSize(textSizeSmall);
-            //textView.setTypeface(null,Typeface.BOLD);
-            textView.setText("\n "+nedbør+" mm   ");
-            textView.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
-//            LayoutParams layoutParams = new LayoutParams();
-//            layoutParams.setMargins(1,0,1,0);
-//            textView.setLayoutParams(layoutParams);
-            newRow.addView(textView);
-
-            /*
-             * Vind
-             */
-        	textView = new TextView(context);
-            textView.setTextSize(textSizeSuperSmall);
-            //textView.setTypeface(null,Typeface.BOLD);
-            textView.setText(vind);
-            textView.setGravity(Gravity.CENTER_VERTICAL);
-            newRow.addView(textView);
-            
-            /*
-             * Legger til den ny raden
-             */
-            tab.addView(newRow);   
-        }
-        
-        /**
-         * Legg til overskrift i detaljtab'en
-         * @param text
-         * @param tab
-         */
-        private void leggTilDetaljOverskrift(String text, TableLayout tab) 
-        {
-        	TextView textView = new TextView(context);
-            textView.setTextSize(textSizeMedium);
-            textView.setTypeface(null,Typeface.BOLD);
-            textView.setBackgroundResource(R.drawable.weather_detail_header);
-//            textView.setBackgroundColor(getResources().getColor(R.color.background_title));
-            textView.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-            textView.setText(text);
-            tab.addView(textView);
-        }
-        
     }
     
     
     /**
      * Henter varsel for valgt sted og online
      */
-    private ForeCast hentVarsel(String url)
+    private String hentVarsel(String url, TableLayout detaljTable)
     {
+        detaljTable.removeAllViews();
+
     	//Url objekt for å velge xml ressurs online
         URL xmlUrl = null;
         //Xmlperseren
         XmlPullParser varselBatch = null;
-        String errorDetail = "";
 
         try
 		{
@@ -303,27 +175,24 @@ public class Weather extends Activity
 			varselBatch = XmlPullParserFactory.newInstance().newPullParser();
 			//Henter xmlstrømmen fra yr.no
 			varselBatch.setInput(xmlUrl.openStream(), null);
-			//Parser xmlfilen (online eller offline)
-			return parseVarsel(varselBatch);
 		} 
         catch (MalformedURLException e)
 		{
 			e.printStackTrace();
-			errorDetail = e.getMessage();
-			
 		} 
-        catch (XmlPullParserException e)
+        catch (XmlPullParserException e1)
 		{
-        	e.printStackTrace();
-			errorDetail = e.getMessage();
+        	e1.printStackTrace();
 		} 
         catch (IOException e)
 		{
 			e.printStackTrace();
-			errorDetail = e.getMessage();
 		}
-        Toast.makeText(getBaseContext(), getResources().getString(R.string.weather_toast_bad) + " " + errorDetail, Toast.LENGTH_LONG).show();
-        return null;
+		
+		//Parser xmlfilen (online eller offline)
+		parseVarsel(varselBatch, detaljTable);
+		return null;
+
     }
     
   /**
@@ -332,9 +201,8 @@ public class Weather extends Activity
    * På den måten kan jeg fortsette til neste del av xml filen om noe skulle krasje underveis.
    * @param varsel, xml parseren
    */
-    private ForeCast parseVarsel(XmlPullParser varsel)
+    private void parseVarsel(XmlPullParser varsel, TableLayout detaljTable)
     {
-    	ForeCast foreCast = new ForeCast();
     	//Type tag
 		int eventType = -1;
 		
@@ -353,7 +221,7 @@ public class Weather extends Activity
 	    		 { 
 	    			 try
 	    			 {
-	    				 behandleSted(varsel, foreCast);
+	    				 behandleSted(varsel);
 	    			 } 
 	    			 catch (XmlPullParserException e)
 	    			 {
@@ -372,7 +240,7 @@ public class Weather extends Activity
 	    		 { 
 	    			 try
 	    			 {
-	    				 behandleKreditering(varsel, foreCast);
+	    				 behandleKreditering(varsel);
 	    			 } 
 	    			 catch (XmlPullParserException e)
 	    			 {
@@ -391,7 +259,7 @@ public class Weather extends Activity
 	    		 { 
 	    			 try
 	    			 {
-	    				 behandleMeta(varsel, foreCast);
+	    				 behandleMeta(varsel);
 	    			 } 
 	    			 catch (XmlPullParserException e)
 	    			 {
@@ -409,9 +277,9 @@ public class Weather extends Activity
 	    		 else if (strName.equals("sun")) 
 	    		 { 
 	    			 //Tekstlig info
-	    			 foreCast.setSunRise(varsel.getAttributeValue(null, "rise"));
+					sunRise = varsel.getAttributeValue(null, "rise");
 					//Url
-	    			 foreCast.setSunSet(varsel.getAttributeValue(null, "set"));
+					sunSet = varsel.getAttributeValue(null, "set");  
 	    		 } 	    		 
 
 	    		 /*
@@ -421,7 +289,7 @@ public class Weather extends Activity
 	    		 { 
 	    			 try
 	    			 {
-	    				 behandleVarsel(varsel, foreCast);
+	    				 behandleVarsel(varsel, null, detaljTable);
 	    			 } 
 	    			 catch (XmlPullParserException e)
 	    			 {
@@ -445,8 +313,7 @@ public class Weather extends Activity
 	         {
 	        	 e.printStackTrace();
 	         } 
-	     }
-	     return foreCast;
+	     }	 
 	}
     
     /**
@@ -456,7 +323,7 @@ public class Weather extends Activity
      * @throws XmlPullParserException
      * @throws IOException
      */
-    private void behandleSted(XmlPullParser varsel, ForeCast foreCast) throws XmlPullParserException, IOException  
+    private void behandleSted(XmlPullParser varsel) throws XmlPullParserException, IOException  
 
     { 
     	String tekst = ""; 
@@ -476,34 +343,33 @@ public class Weather extends Activity
             	//Tag for navn på sted
                 if (strName.equals("name"))
                 {
-                	foreCast.setPlaceName(varsel.nextText().trim());
+                	placeName = varsel.nextText().trim();
                 }
                 
                 //Tag for type sted (Tettsted/By)
                 else if (strName.equals("type"))
                 {
-                	foreCast.setPlaceType(varsel.nextText().trim());
+                	placeType = varsel.nextText().trim();
                 }
                 
                 //Tag for land
                 else if (strName.equals("country"))
                 {
-                	foreCast.setPlaceCountry(varsel.nextText().trim());
+                	placeCountry = varsel.nextText().trim();
                 }
                 
                 //Tag for tidssone
                 else if (strName.equals("timezone"))
                 {
-                	foreCast.setPlaceTimezone(varsel.getAttributeValue(null, "id").trim());                	
+                	placeTimezone = varsel.getAttributeValue(null, "id").trim();
                 }
                 
                 //Tag for koordinatinfo
                 else if (strName.equals("location"))
                 {
-                	
-                	foreCast.setPlaceAltitude(varsel.getAttributeValue(null, "altitude").trim());
-                	foreCast.setPlaceLatitude(varsel.getAttributeValue(null, "latitude").trim());
-                	foreCast.setPlaceLongitude(varsel.getAttributeValue(null, "longitude").trim());
+                	placeAltitude = varsel.getAttributeValue(null, "altitude").trim();
+                	placeLatitude = varsel.getAttributeValue(null, "latitude").trim();
+                	placeLongitude = varsel.getAttributeValue(null, "longitude").trim();
                 }
             } 
         	
@@ -517,7 +383,7 @@ public class Weather extends Activity
         } 
 	}    
 
-    private void behandleMeta(XmlPullParser varsel, ForeCast foreCast) throws XmlPullParserException, IOException
+    private void behandleMeta(XmlPullParser varsel) throws XmlPullParserException, IOException
     { 
     	String tekst = ""; 
     	//Ferdig med å parse denne delen
@@ -535,11 +401,11 @@ public class Weather extends Activity
             	
                 if (strName.equals("lastupdate"))
                 {
-                	foreCast.setLastUpdated(varsel.nextText().trim());
+                	lastUpdated = varsel.nextText().trim();
                 }
                 else if (strName.equals("nextupdate"))
                 {
-                	foreCast.setNextUpdate(varsel.nextText().trim());
+                	nextUpdate = varsel.nextText().trim();
                 }
             } 
         	
@@ -567,7 +433,7 @@ public class Weather extends Activity
      * @throws XmlPullParserException
      * @throws IOException
      */
-    private void behandleKreditering(XmlPullParser varsel, ForeCast foreCast) throws XmlPullParserException, IOException
+    private void behandleKreditering(XmlPullParser varsel) throws XmlPullParserException, IOException
     { 
     	String tekst = ""; 
     	//Ferdig med å parse denne delen
@@ -587,9 +453,9 @@ public class Weather extends Activity
                 if (strName.equals("link"))
                 {
                 	//Tekstlig info
-                	foreCast.setCreditText(varsel.getAttributeValue(null, "text"));
+                	creditText = varsel.getAttributeValue(null, "text");
                 	//Url
-                	foreCast.setCreditUrl(varsel.getAttributeValue(null, "url"));
+                	creditUrl = varsel.getAttributeValue(null, "url");
                 }
             } 
         	
@@ -615,7 +481,7 @@ public class Weather extends Activity
      * @throws XmlPullParserException
      * @throws IOException
      */
-    private void behandleVarsel(XmlPullParser varsel, ForeCast foreCast) throws XmlPullParserException, IOException
+    private void behandleVarsel(XmlPullParser varsel, TableLayout tekstTab, TableLayout detaljTab) throws XmlPullParserException, IOException
     {
     	//Ferdig med å parse denne delen
         boolean ferdig=false; 
@@ -643,7 +509,7 @@ public class Weather extends Activity
                  */
                 else if(strName.equals("tabular"))
                 {
-                	behandleDetaljVarsel(varsel, foreCast);
+                	behandleDetaljVarsel(varsel,detaljTab);
                 }
             }
           	//Slutt tag
@@ -663,9 +529,8 @@ public class Weather extends Activity
      * @throws XmlPullParserException
      * @throws IOException
      */
-    private void behandleDetaljVarsel(XmlPullParser varsel, ForeCast foreCast) throws XmlPullParserException, IOException
+    private void behandleDetaljVarsel(XmlPullParser varsel, TableLayout detaljTab) throws XmlPullParserException, IOException
     {
-    	ForeCastDay day = null;
        	String fra = ""; //Fra dato-tidspunkt, hentes fra xml
     	String til = ""; //Til dato-tidspunkt, hentes fra xml
     	String periode = ""; //Døgnet deles i 4 perioder, perioden hentes fra xml
@@ -678,9 +543,6 @@ public class Weather extends Activity
     	String vindHastighetBeskrivelse = ""; //Vindhastighetbenevnelse, hentes fra xml
     	String vindHastighetMps = ""; //Vindhastigheten i mps, hentes fra xml
     	String temperatur = ""; //Temperatur i grader C, hentes fra xml 
-    	String temperaturUnit = "";
-    	String pressure = "";
-    	String pressureUnit = "";
     	String nedbør = ""; //Millimeter nedbør, hentes fra xml
     	Date dato = null; //Dato varselet gjelder for, omgjøres fra string til dato
     	Date forrigeDato = null; //Tar vare på forrige dato, brukes til å sjekke om jeg skal skrive ny overskrift i tabellen
@@ -736,14 +598,7 @@ public class Weather extends Activity
                 else if(strName.equals("temperature"))
                 {
                 	temperatur = varsel.getAttributeValue(null, "value");
-                	temperaturUnit = varsel.getAttributeValue(null, "unit");
-                }         
-                //Tag for temperatur
-                else if(strName.equals("pressure"))
-                {
-                	pressure = varsel.getAttributeValue(null, "value");
-                	pressureUnit = varsel.getAttributeValue(null, "unit");
-                }                            
+                }                
             } 
         	
         	//Slutt tag
@@ -789,34 +644,160 @@ public class Weather extends Activity
           				forrigeDato = dato;
           				String dag = hentDag(dato);
           		        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-          				//leggTilDetaljOverskrift(dag + " " + sdf.format(dato)  , detaljTab);
-          		        if(day!=null) {
-          		        	foreCast.addDay(day);
-          		        }
-          		        day = new ForeCastDay(dag, dato);
-
+          				leggTilDetaljOverskrift(dag + " " + sdf.format(dato)  , detaljTab);
           			}
           			
           			//Skriver detaljert værdata til tabellen
           			String fraKl = fra.substring(fra.indexOf("T")+1, fra.length()-3);
           			String tilKl = til.substring(til.indexOf("T")+1, til.length()-3);
-//          			leggTilDetaljLinje(detaljTab, naarPaaDagen + "\n" + fraKl + "-" + tilKl, 
-//          					per,sym, temperatur, nedbør, vindHastighetBeskrivelse + "\n" + 
-//          					vindHastighetMps + " mps" + "\nfra " + vindFra);
-          			ForeCastDetail detail = new ForeCastDetail(naarPaaDagen, fraKl, tilKl, per, sym, temperatur, temperaturUnit, nedbør, vindFra, vindHastighetMps, vindHastighetBeskrivelse, pressure, pressureUnit);
-          			day.addDetail(detail);
+          			leggTilDetaljLinje(detaljTab, naarPaaDagen + "\n" + fraKl + "-" + tilKl, 
+          					per,sym, temperatur, nedbør, vindHastighetBeskrivelse + "\n" + 
+          					vindHastighetMps + " mps" + "\nfra " + vindFra);
           		}
           	} 
-          	if (!ferdig) eventType = varsel.next();
-        }
-        if(day!=null) {
-        	if (!foreCast.containsDay(day)) {
-        		foreCast.addDay(day);
-        	}
-        }
+          	if (!ferdig) eventType = varsel.next(); 
+        }    	
     }
     
+    /**
+     * Legger til en linje i detaljert v�rdata tab'en
+     * @param tab
+     * @param naarPaaDagen
+     * @param periode
+     * @param symbol
+     * @param temperatur
+     * @param nedbør
+     * @param vind
+     */
+    private void leggTilDetaljLinje(TableLayout tab, String naarPaaDagen, int periode, int symbol, 
+    		String temperatur, String nedbør, String vind) 
+    {
+    	//Oppretter en ny rad
+    	TableRow newRow = new TableRow(this);
+    	
+    	//id til symbolgrafikk
+    	int id = 0;
+    	//øker antall rader med 1
+    	antallDetaljRader++;
+    	
+    	//Legger bakgrunnsfarge på raden
+    	if((antallDetaljRader % 2) == 0)
+    	{
+    		newRow.setBackgroundColor(getResources().getColor(R.color.background_even));
+    	}
+    	else
+    	{
+    		newRow.setBackgroundColor(getResources().getColor(R.color.background_odd));
+    	}
+    	
+    	/*
+    	 * Når på dagen
+    	 */
+    	TextView textView = new TextView(this);
+        textView.setTextSize(textSizeSmall);
+        //textView.setTypeface(null,Typeface.BOLD);
+        textView.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
+        //CENTER_VERTICAL fungerer ikke, blir nødt til å legge på et linjeskift:
+        textView.setText(naarPaaDagen);
+        newRow.addView(textView);
+        
+        /*
+         * Symbol (bilde)
+         */
+        //Forsøker å beregne navn på bildefil
+    	String drawableName = String.valueOf(symbol);
+    	String drawableNamePlus = ""; 
+    	if(symbol<10)
+    	{
+    		drawableName = "0"+drawableName;
+    	}
+    	if(periode==0 || periode==3)
+    	{
+    		drawableNamePlus = "n"+drawableName;
+    	}
+    	else
+    	{
+    		drawableNamePlus = "d"+drawableName;
+    	}
+    	id = getResources().getIdentifier(drawableNamePlus, "drawable", "com.norway.bergen.ronny.bergen");
+    	if(id==0)
+    	{
+    		drawableNamePlus = "f"+drawableName;
+    		id = getResources().getIdentifier(drawableNamePlus, "drawable", "com.norway.bergen.ronny.bergen");
+    	}
+    	
+    	if(id!=0)
+    	{
+        	ImageView imageView = new ImageView(this);
+        	imageView.setImageResource(id);
+        	
+        	newRow.addView(imageView);
+    	}
+        
+        /*
+         * Temperatur
+         */
+        textView = new TextView(this);
+        textView.setTextSize(textSizeMedium);
+        textView.setTypeface(null,Typeface.BOLD);
+        int temp = Integer.valueOf(temperatur);
+        if(temp<1)
+        {
+        	textView.setTextColor(getResources().getColor(R.color.blue));
+        }
+        else
+        {
+        	textView.setTextColor(getResources().getColor(R.color.red));
+        }
+        textView.setText("\n"+temperatur+"\u00B0");
+        textView.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
+        newRow.addView(textView);
+        
+        
+        /*
+         * Nedbør
+         */
+    	textView = new TextView(this);
+        textView.setTextSize(textSizeSmall);
+        //textView.setTypeface(null,Typeface.BOLD);
+        textView.setText("\n "+nedbør+" mm   ");
+        textView.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
+//        LayoutParams layoutParams = new LayoutParams();
+//        layoutParams.setMargins(1,0,1,0);
+//        textView.setLayoutParams(layoutParams);
+        newRow.addView(textView);
 
+        /*
+         * Vind
+         */
+    	textView = new TextView(this);
+        textView.setTextSize(textSizeSuperSmall);
+        //textView.setTypeface(null,Typeface.BOLD);
+        textView.setText(vind);
+        textView.setGravity(Gravity.CENTER_VERTICAL);
+        newRow.addView(textView);
+        
+        /*
+         * Legger til den ny raden
+         */
+        tab.addView(newRow);   
+    }
+    
+    /**
+     * Legg til overskrift i detaljtab'en
+     * @param text
+     * @param tab
+     */
+    private void leggTilDetaljOverskrift(String text, TableLayout tab) 
+    {
+    	TextView textView = new TextView(this);
+        textView.setTextSize(textSizeMedium);
+        textView.setTypeface(null,Typeface.BOLD);
+        textView.setBackgroundColor(getResources().getColor(R.color.background_title));
+        textView.setGravity(Gravity.CENTER_HORIZONTAL);
+        textView.setText(text);
+        tab.addView(textView);
+    }
     
    
     /**

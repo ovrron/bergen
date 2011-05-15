@@ -9,84 +9,99 @@
 	<LinearLayout 
 	    android:orientation="vertical"
 	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent">
+	    android:layout_height="fill_parent"
+	    >
+	    <Button 
+	    	android:id="@+id/buttonHeader" 
+	    	android:layout_width="fill_parent" 
+	    	android:layout_height="wrap_content"
+	    	android:background="@drawable/header"
+			android:drawableRight="@drawable/icon_small" 
+			android:layout_marginLeft="10dip"
+			android:gravity="center_vertical"
+			android:textColor="#ffffff" 
+	    	android:textStyle="bold" 
+	    	android:textSize="25dip"
+	    	android:text="@string/app_name"
+	    	>
+	    </Button>
 	    <Button 
 	    	android:id="@+id/buttonParking" 
 	    	android:layout_width="fill_parent" 
 	    	android:layout_height="wrap_content"
 	    	android:text="@string/start_button_parking" 
-	    	android:layout_marginTop="10dip" 
-	    	android:layout_marginLeft="10dip" 
-	    	android:layout_marginRight="10dip"
 	    	android:drawableRight="@drawable/bergensentrum_logo" 
 	    	android:background="@drawable/button_background"
 	    	android:textColor="#ffffff" 
 	    	android:textSize="20dip"
-	    	android:gravity="center_vertical" android:typeface="normal">
+	    	android:gravity="center_vertical" 
+			android:layout_marginLeft="10dip"
+		>
 	    </Button>
 	    <Button 
 	    	android:id="@+id/buttonWeather" 
 	    	android:layout_width="fill_parent" 
 	    	android:layout_height="wrap_content"
 	    	android:text="@string/start_button_weather" 
-	    	android:layout_marginTop="10dip" 
-	    	android:layout_marginLeft="10dip" 
-	    	android:layout_marginRight="10dip"
 	    	android:drawableRight="@drawable/yr_logo" 
 	    	android:background="@drawable/button_background"
 	    	android:textColor="#ffffff" 
 	    	android:textSize="20dip"
-	    	android:gravity="center_vertical">
+	    	android:gravity="center_vertical"
+	    	android:layout_marginLeft="10dip"
+	    	>
 	    </Button>
 	    <Button 
 	    	android:id="@+id/buttonCinema" 
 	    	android:layout_width="fill_parent" 
 	    	android:layout_height="wrap_content"
 	    	android:text="@string/start_button_cinema" 
-	    	android:layout_marginTop="10dip" 
-	    	android:layout_marginLeft="10dip" 
-	    	android:layout_marginRight="10dip"
 	    	android:drawableRight="@drawable/bergenkino_logo" 
 	    	android:background="@drawable/button_background"
 	    	android:textColor="#ffffff" 
-	    	android:textSize="20dip" android:gravity="center_vertical">
+	    	android:textSize="20dip" 
+	    	android:gravity="center_vertical"
+	    	android:layout_marginLeft="10dip"
+	    	>
 	    </Button>
 	    <Button 
 	    	android:id="@+id/buttonConcerts" 
 	    	android:layout_width="fill_parent" 
 	    	android:layout_height="wrap_content"
 	    	android:text="@string/start_button_concerts" 
-	    	android:layout_marginTop="10dip" 
-	    	android:layout_marginLeft="10dip" 
-	    	android:layout_marginRight="10dip"
-	    	android:drawableRight="@drawable/music_logo" 
+	    	android:drawableRight="@drawable/brak_logo" 
 	    	android:background="@drawable/button_background"
 	    	android:textColor="#ffffff" 
-	    	android:textSize="20dip" android:gravity="center_vertical">
+	    	android:textSize="20dip" 
+	    	android:gravity="center_vertical"
+	    	android:layout_marginLeft="10dip"
+	    	>
 	    </Button>
 	    <Button 
 	    	android:id="@+id/buttonPlay" 
 	    	android:layout_width="fill_parent" 
 	    	android:layout_height="wrap_content"
 	    	android:text="@string/start_button_play" 
-	    	android:layout_marginTop="10dip" 
-	    	android:layout_marginLeft="10dip" 
-	    	android:layout_marginRight="10dip"
 	    	android:background="@drawable/button_background"
 	    	android:textColor="#ffffff" 
-	    	android:textSize="20dip" android:gravity="center_vertical" android:drawableRight="@drawable/dns_logo">
+	    	android:textSize="20dip" 
+	    	android:gravity="center_vertical" 
+	    	android:drawableRight="@drawable/dns_logo"
+	    	android:layout_marginLeft="10dip"
+	    	>
 	    </Button>
 		<Button 
 	    	android:id="@+id/buttonTaxi" 
 	    	android:layout_width="fill_parent" 
 	    	android:layout_height="wrap_content"
 	    	android:text="@string/start_button_taxi" 
-	    	android:layout_marginTop="10dip" 
-	    	android:layout_marginLeft="10dip" 
-	    	android:layout_marginRight="10dip"
 	    	android:background="@drawable/button_background"
 	    	android:textColor="#ffffff" 
-	    	android:textSize="20dip" android:gravity="center_vertical" android:drawableRight="@drawable/taxi_logo">
-	    </Button>    
+	    	android:textSize="20dip" 
+	    	android:gravity="center_vertical" 
+	    	android:drawableRight="@drawable/taxi_logo"
+	    	android:layout_marginLeft="10dip"
+	    	>
+	    </Button>
 	</LinearLayout>
 </ScrollView>
