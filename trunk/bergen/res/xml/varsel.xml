@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<weatherdata>
+  <location>
+    <name>Bergen</name>
+    <type>By</type>
+    <country>Norge</country>
+    <timezone id="Europe/Oslo" utcoffsetMinutes="120" />
+    <location altitude="6" latitude="60.3929932744419" longitude="5.32415240610052" geobase="ssr" geobaseid="92416" />
+  </location>
+  <credit>
+    <!--For å bruke gratis værdata fra yr.no, MÅ du vise følgende tekst godt synlig på nettsiden din. Teksten skal være en lenke til URL-en som er spesifisert.-->
+    <!--Les mer om vilkår for bruk av gratis værdata + retningslinjer på 
+http://www.yr.no/verdata/ -->
+    <link text="Værvarsel fra yr.no, levert av Meteorologisk institutt og NRK" url="http://www.yr.no/sted/Norge/Hordaland/Bergen/Bergen/" />
+  </credit>
+  <links>
+    <link id="xmlSource" url="http://www.yr.no/sted/Norge/Hordaland/Bergen/Bergen/varsel.xml" />
+    <link id="overview" url="http://www.yr.no/sted/Norge/Hordaland/Bergen/Bergen/" />
+    <link id="hourByHour" url="http://www.yr.no/sted/Norge/Hordaland/Bergen/Bergen/time_for_time.html" />
+    <link id="weekend" url="http://www.yr.no/sted/Norge/Hordaland/Bergen/Bergen/helg.html" />
+    <link id="longTermForecast" url="http://www.yr.no/sted/Norge/Hordaland/Bergen/Bergen/langtidsvarsel.html" />
+    <link id="radar" url="http://www.yr.no/sted/Norge/Hordaland/Bergen/Bergen/radar.html" />
+  </links>
+  <meta>
+    <lastupdate>2011-05-15T19:11:00</lastupdate>
+    <nextupdate>2011-05-15T23:45:00</nextupdate>
+  </meta>
+  <sun rise="2011-05-15T04:59:11" set="2011-05-15T22:12:40" />
+  <forecast>
+    <text>
+      <location name="Bergen">
+        <time from="2011-05-15" to="2011-05-16">
+          <title>søndag og mandag</title>
+          <body>&lt;strong&gt;Hordaland:&lt;/strong&gt; Nordvestlig bris, på kysten periodevis frisk bris 10 m/s, natt til mandag minking til vestlig bris, om formiddagen dreiende sørlig. Skyet eller delvis skyet. Regnbyger. Om kvelden dreining til sørvestlig bris. Regn, først i ytre strøk.</body>
+        </time>
+        <time from="2011-05-17" to="2011-05-17">
+          <title>tirsdag</title>
+          <body>&lt;strong&gt;Hordaland:&lt;/strong&gt; Økning til nordvest frisk bris 10 m/s, på kysten periodevis liten kuling 12. Skyet. Regnbyger. Tirsdag morgen dreining til vestlig bris, periodevis frisk bris 10. Skiftende skydekke. Regnbyger. Litt sol. Sent tirsdag kveld skiftende bris. Oppholdsvær.</body>
+        </time>
+        <time from="2011-05-18" to="2011-05-18">
+          <title>onsdag</title>
+          <body>&lt;strong&gt;Vestlandet:&lt;/strong&gt; Sørlig liten kuling på kysten. Regn, mest nedbør fra Bergen og sørover. Omtrent uendret temperatur.</body>
+        </time>
+        <time from="2011-05-19" to="2011-05-20">
+          <title>torsdag og fredag</title>
+          <body>&lt;strong&gt;Sør-Norge:&lt;/strong&gt; Sørvestlig bris, perioder med kuling på kysten og i fjellet. Regn av og til, men østafjells relativt lite nedbør og perioder med pent vær. Omtrent uendret temperatur.</body>
+        </time>
+        <time from="2011-05-21" to="2011-05-24">
+          <title>lørdag til tirsdag</title>
+          <body>&lt;strong&gt;Norge og Spitsbergen:&lt;/strong&gt; Lavtrykket over Skandinavia beveger seg østover og en høytrykksrygg forsterker seg etter hvert over Sør-Norge.Sør-Norge får etter hvert lettere vær, til dels pent vær østafjells. Noen regnbyger kan forekomme på Vestlandet og i Trøndelag. Sørlig bris og stigende temperatur. I Nord-Norge blir det perioder med regn, men helt i slutten av perioden mye pent vær. Overveiende sørlig bris og litt stigende temperatur. På Spitsbergen blir det østlig bris, for det meste pent vær og litt høyere temperatur.</body>
+        </time>
+      </location>
+    </text>
+    <tabular>
+      <time from="2011-05-16T00:00:00" to="2011-05-16T06:00:00" period="0">
+        <!-- Valid from 2011-05-16T00:00:00 to 2011-05-16T06:00:00 -->
+        <symbol number="4" name="Skyet" var="04" />
+        <precipitation value="0.5" minvalue="0.0" maxvalue="0.7" />
+        <!-- Valid at 2011-05-16T00:00:00 -->
+        <windDirection deg="289.8" code="WNW" name="Vest-nordvest" />
+        <windSpeed mps="1.8" name="Svak vind" />
+        <temperature unit="celsius" value="9" />
+        <pressure unit="hPa" value="1010.1" />
+      </time>
+      <time from="2011-05-16T06:00:00" to="2011-05-16T12:00:00" period="1">
+        <!-- Valid from 2011-05-16T06:00:00 to 2011-05-16T12:00:00 -->
+        <symbol number="5" name="Regnbyger" var="05d" />
+        <precipitation value="0.5" minvalue="0.0" maxvalue="1.0" />
+        <!-- Valid at 2011-05-16T06:00:00 -->
+        <windDirection deg="269.5" code="W" name="Vest" />
+        <windSpeed mps="0.6" name="Flau vind" />
+        <temperature unit="celsius" value="9" />
+        <pressure unit="hPa" value="1009.2" />
+      </time>
+      <time from="2011-05-16T12:00:00" to="2011-05-16T18:00:00" period="2">
+        <!-- Valid from 2011-05-16T12:00:00 to 2011-05-16T18:00:00 -->
+        <symbol number="3" name="Delvis skyet" var="03d" />
+        <precipitation value="0.0" minvalue="0.0" maxvalue="0.3" />
+        <!-- Valid at 2011-05-16T12:00:00 -->
+        <windDirection deg="214.1" code="SW" name="Sørvest" />
+        <windSpeed mps="2.9" name="Svak vind" />
+        <temperature unit="celsius" value="12" />
+        <pressure unit="hPa" value="1008.0" />
+      </time>
+      <time from="2011-05-16T18:00:00" to="2011-05-17T00:00:00" period="3">
+        <!-- Valid from 2011-05-16T18:00:00 to 2011-05-17T00:00:00 -->
+        <symbol number="4" name="Skyet" var="04" />
+        <precipitation value="0.0" minvalue="0.0" maxvalue="0.3" />
+        <!-- Valid at 2011-05-16T18:00:00 -->
+        <windDirection deg="260.7" code="W" name="Vest" />
+        <windSpeed mps="2.7" name="Svak vind" />
+        <temperature unit="celsius" value="12" />
+        <pressure unit="hPa" value="1006.4" />
+      </time>
+      <time from="2011-05-17T00:00:00" to="2011-05-17T06:00:00" period="0">
+        <!-- Valid from 2011-05-17T00:00:00 to 2011-05-17T06:00:00 -->
+        <symbol number="4" name="Skyet" var="04" />
+        <precipitation value="0.7" minvalue="0.4" maxvalue="0.9" />
+        <!-- Valid at 2011-05-17T00:00:00 -->
+        <windDirection deg="9.1" code="N" name="Nord" />
+        <windSpeed mps="1.6" name="Svak vind" />
+        <temperature unit="celsius" value="9" />
+        <pressure unit="hPa" value="1005.7" />
+      </time>
+      <time from="2011-05-17T06:00:00" to="2011-05-17T12:00:00" period="1">
+        <!-- Valid from 2011-05-17T06:00:00 to 2011-05-17T12:00:00 -->
+        <symbol number="5" name="Regnbyger" var="05d" />
+        <precipitation value="1.7" minvalue="0.5" maxvalue="2.8" />
+        <!-- Valid at 2011-05-17T06:00:00 -->
+        <windDirection deg="334.0" code="NNW" name="Nord-nordvest" />
+        <windSpeed mps="1.8" name="Svak vind" />
+        <temperature unit="celsius" value="7" />
+        <pressure unit="hPa" value="1005.8" />
+      </time>
+      <time from="2011-05-17T12:00:00" to="2011-05-17T18:00:00" period="2">
+        <!-- Valid from 2011-05-17T12:00:00 to 2011-05-17T18:00:00 -->
+        <symbol number="5" name="Regnbyger" var="05d" />
+        <precipitation value="2.3" minvalue="0.6" maxvalue="4.0" />
+        <!-- Valid at 2011-05-17T12:00:00 -->
+        <windDirection deg="284.5" code="WNW" name="Vest-nordvest" />
+        <windSpeed mps="4.3" name="Lett bris" />
+        <temperature unit="celsius" value="11" />
+        <pressure unit="hPa" value="1007.1" />
+      </time>
+      <time from="2011-05-17T18:00:00" to="2011-05-18T00:00:00" period="3">
+        <!-- Valid from 2011-05-17T18:00:00 to 2011-05-18T00:00:00 -->
+        <symbol number="5" name="Regnbyger" var="05d" />
+        <precipitation value="0.8" minvalue="0.0" maxvalue="1.4" />
+        <!-- Valid at 2011-05-17T18:00:00 -->
+        <windDirection deg="242.3" code="WSW" name="Vest-sørvest" />
+        <windSpeed mps="2.8" name="Svak vind" />
+        <temperature unit="celsius" value="9" />
+        <pressure unit="hPa" value="1007.8" />
+      </time>
+      <time from="2011-05-18T00:00:00" to="2011-05-18T06:00:00" period="0">
+        <!-- Valid from 2011-05-18T00:00:00 to 2011-05-18T06:00:00 -->
+        <symbol number="4" name="Skyet" var="04" />
+        <precipitation value="0.7" minvalue="0.0" maxvalue="1.2" />
+        <!-- Valid at 2011-05-18T00:00:00 -->
+        <windDirection deg="160.6" code="SSE" name="Sør-sørøst" />
+        <windSpeed mps="2.6" name="Svak vind" />
+        <temperature unit="celsius" value="7" />
+        <pressure unit="hPa" value="1008.4" />
+      </time>
+      <time from="2011-05-18T08:00:00" to="2011-05-18T14:00:00" period="1">
+        <!-- Valid from 2011-05-18T08:00:00 to 2011-05-18T14:00:00 -->
+        <symbol number="10" name="Kraftig regn" var="10" />
+        <precipitation value="7.0" />
+        <!-- Valid at 2011-05-18T08:00:00 -->
+        <windDirection deg="147.1" code="SSE" name="Sør-sørøst" />
+        <windSpeed mps="5.9" name="Laber bris" />
+        <temperature unit="celsius" value="8" />
+        <pressure unit="hPa" value="1003.2" />
+      </time>
+      <time from="2011-05-18T14:00:00" to="2011-05-18T20:00:00" period="2">
+        <!-- Valid from 2011-05-18T14:00:00 to 2011-05-18T20:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="5.0" />
+        <!-- Valid at 2011-05-18T14:00:00 -->
+        <windDirection deg="155.7" code="SSE" name="Sør-sørøst" />
+        <windSpeed mps="7.1" name="Laber bris" />
+        <temperature unit="celsius" value="13" />
+        <pressure unit="hPa" value="999.3" />
+      </time>
+      <time from="2011-05-18T20:00:00" to="2011-05-19T02:00:00" period="3">
+        <!-- Valid from 2011-05-18T20:00:00 to 2011-05-19T02:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="4.4" />
+        <!-- Valid at 2011-05-18T20:00:00 -->
+        <windDirection deg="199.1" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="7.7" name="Laber bris" />
+        <temperature unit="celsius" value="12" />
+        <pressure unit="hPa" value="998.7" />
+      </time>
+      <time from="2011-05-19T02:00:00" to="2011-05-19T08:00:00" period="0">
+        <!-- Valid from 2011-05-19T02:00:00 to 2011-05-19T08:00:00 -->
+        <symbol number="10" name="Kraftig regn" var="10" />
+        <precipitation value="6.0" />
+        <!-- Valid at 2011-05-19T02:00:00 -->
+        <windDirection deg="195.8" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="7.4" name="Laber bris" />
+        <temperature unit="celsius" value="11" />
+        <pressure unit="hPa" value="997.5" />
+      </time>
+      <time from="2011-05-19T08:00:00" to="2011-05-19T14:00:00" period="1">
+        <!-- Valid from 2011-05-19T08:00:00 to 2011-05-19T14:00:00 -->
+        <symbol number="10" name="Kraftig regn" var="10" />
+        <precipitation value="8.0" />
+        <!-- Valid at 2011-05-19T08:00:00 -->
+        <windDirection deg="211.3" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="8.4" name="Frisk bris" />
+        <temperature unit="celsius" value="11" />
+        <pressure unit="hPa" value="997.3" />
+      </time>
+      <time from="2011-05-19T14:00:00" to="2011-05-19T20:00:00" period="2">
+        <!-- Valid from 2011-05-19T14:00:00 to 2011-05-19T20:00:00 -->
+        <symbol number="10" name="Kraftig regn" var="10" />
+        <precipitation value="8.0" />
+        <!-- Valid at 2011-05-19T14:00:00 -->
+        <windDirection deg="231.2" code="SW" name="Sørvest" />
+        <windSpeed mps="8.6" name="Frisk bris" />
+        <temperature unit="celsius" value="12" />
+        <pressure unit="hPa" value="1001.8" />
+      </time>
+      <time from="2011-05-19T20:00:00" to="2011-05-20T02:00:00" period="3">
+        <!-- Valid from 2011-05-19T20:00:00 to 2011-05-20T02:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="5.0" />
+        <!-- Valid at 2011-05-19T20:00:00 -->
+        <windDirection deg="223.6" code="SW" name="Sørvest" />
+        <windSpeed mps="7.2" name="Laber bris" />
+        <temperature unit="celsius" value="12" />
+        <pressure unit="hPa" value="1006.8" />
+      </time>
+      <time from="2011-05-20T02:00:00" to="2011-05-20T08:00:00" period="0">
+        <!-- Valid from 2011-05-20T02:00:00 to 2011-05-20T08:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="2.9" />
+        <!-- Valid at 2011-05-20T02:00:00 -->
+        <windDirection deg="205.9" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="5.2" name="Lett bris" />
+        <temperature unit="celsius" value="10" />
+        <pressure unit="hPa" value="1010.3" />
+      </time>
+      <time from="2011-05-20T08:00:00" to="2011-05-20T14:00:00" period="1">
+        <!-- Valid from 2011-05-20T08:00:00 to 2011-05-20T14:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="3.0" />
+        <!-- Valid at 2011-05-20T08:00:00 -->
+        <windDirection deg="211.1" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="5.9" name="Laber bris" />
+        <temperature unit="celsius" value="11" />
+        <pressure unit="hPa" value="1013.1" />
+      </time>
+      <time from="2011-05-20T14:00:00" to="2011-05-20T20:00:00" period="2">
+        <!-- Valid from 2011-05-20T14:00:00 to 2011-05-20T20:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="3.1" />
+        <!-- Valid at 2011-05-20T14:00:00 -->
+        <windDirection deg="191.6" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="8.1" name="Frisk bris" />
+        <temperature unit="celsius" value="14" />
+        <pressure unit="hPa" value="1014.8" />
+      </time>
+      <time from="2011-05-20T20:00:00" to="2011-05-21T02:00:00" period="3">
+        <!-- Valid from 2011-05-20T20:00:00 to 2011-05-21T02:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="3.6" />
+        <!-- Valid at 2011-05-20T20:00:00 -->
+        <windDirection deg="230.9" code="SW" name="Sørvest" />
+        <windSpeed mps="7.0" name="Laber bris" />
+        <temperature unit="celsius" value="13" />
+        <pressure unit="hPa" value="1013.8" />
+      </time>
+      <time from="2011-05-21T02:00:00" to="2011-05-21T08:00:00" period="0">
+        <!-- Valid from 2011-05-21T02:00:00 to 2011-05-21T08:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="3.9" />
+        <!-- Valid at 2011-05-21T02:00:00 -->
+        <windDirection deg="167.2" code="SSE" name="Sør-sørøst" />
+        <windSpeed mps="6.5" name="Laber bris" />
+        <temperature unit="celsius" value="12" />
+        <pressure unit="hPa" value="1014.1" />
+      </time>
+      <time from="2011-05-21T08:00:00" to="2011-05-21T14:00:00" period="1">
+        <!-- Valid from 2011-05-21T08:00:00 to 2011-05-21T14:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="3.0" />
+        <!-- Valid at 2011-05-21T08:00:00 -->
+        <windDirection deg="180.3" code="S" name="Sør" />
+        <windSpeed mps="6.1" name="Laber bris" />
+        <temperature unit="celsius" value="12" />
+        <pressure unit="hPa" value="1013.5" />
+      </time>
+      <time from="2011-05-21T14:00:00" to="2011-05-21T20:00:00" period="2">
+        <!-- Valid from 2011-05-21T14:00:00 to 2011-05-21T20:00:00 -->
+        <symbol number="9" name="Regn" var="09" />
+        <precipitation value="1.9" />
+        <!-- Valid at 2011-05-21T14:00:00 -->
+        <windDirection deg="289.8" code="WNW" name="Vest-nordvest" />
+        <windSpeed mps="7.0" name="Laber bris" />
+        <temperature unit="celsius" value="14" />
+        <pressure unit="hPa" value="1019.6" />
+      </time>
+      <time from="2011-05-21T20:00:00" to="2011-05-22T02:00:00" period="3">
+        <!-- Valid from 2011-05-21T20:00:00 to 2011-05-22T02:00:00 -->
+        <symbol number="3" name="Delvis skyet" var="03d" />
+        <precipitation value="0.5" />
+        <!-- Valid at 2011-05-21T20:00:00 -->
+        <windDirection deg="181.7" code="S" name="Sør" />
+        <windSpeed mps="4.4" name="Lett bris" />
+        <temperature unit="celsius" value="15" />
+        <pressure unit="hPa" value="1025.5" />
+      </time>
+      <time from="2011-05-22T02:00:00" to="2011-05-22T08:00:00" period="0">
+        <!-- Valid from 2011-05-22T02:00:00 to 2011-05-22T08:00:00 -->
+        <symbol number="3" name="Delvis skyet" var="mf/03n.73" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-22T02:00:00 -->
+        <windDirection deg="154.3" code="SSE" name="Sør-sørøst" />
+        <windSpeed mps="4.1" name="Lett bris" />
+        <temperature unit="celsius" value="10" />
+        <pressure unit="hPa" value="1028.2" />
+      </time>
+      <time from="2011-05-22T08:00:00" to="2011-05-22T14:00:00" period="1">
+        <!-- Valid from 2011-05-22T08:00:00 to 2011-05-22T14:00:00 -->
+        <symbol number="1" name="Klarvær" var="01d" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-22T08:00:00 -->
+        <windDirection deg="166.3" code="SSE" name="Sør-sørøst" />
+        <windSpeed mps="4.4" name="Lett bris" />
+        <temperature unit="celsius" value="13" />
+        <pressure unit="hPa" value="1027.4" />
+      </time>
+      <time from="2011-05-22T14:00:00" to="2011-05-22T20:00:00" period="2">
+        <!-- Valid from 2011-05-22T14:00:00 to 2011-05-22T20:00:00 -->
+        <symbol number="2" name="Lettskyet" var="02d" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-22T14:00:00 -->
+        <windDirection deg="193.7" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="6.0" name="Laber bris" />
+        <temperature unit="celsius" value="18" />
+        <pressure unit="hPa" value="1027.6" />
+      </time>
+      <time from="2011-05-22T20:00:00" to="2011-05-23T02:00:00" period="3">
+        <!-- Valid from 2011-05-22T20:00:00 to 2011-05-23T02:00:00 -->
+        <symbol number="1" name="Klarvær" var="01d" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-22T20:00:00 -->
+        <windDirection deg="181.6" code="S" name="Sør" />
+        <windSpeed mps="4.9" name="Lett bris" />
+        <temperature unit="celsius" value="17" />
+        <pressure unit="hPa" value="1027.1" />
+      </time>
+      <time from="2011-05-23T02:00:00" to="2011-05-23T08:00:00" period="0">
+        <!-- Valid from 2011-05-23T02:00:00 to 2011-05-23T08:00:00 -->
+        <symbol number="3" name="Delvis skyet" var="mf/03n.76" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-23T02:00:00 -->
+        <windDirection deg="188.5" code="S" name="Sør" />
+        <windSpeed mps="4.0" name="Lett bris" />
+        <temperature unit="celsius" value="13" />
+        <pressure unit="hPa" value="1028.0" />
+      </time>
+      <time from="2011-05-23T08:00:00" to="2011-05-23T14:00:00" period="1">
+        <!-- Valid from 2011-05-23T08:00:00 to 2011-05-23T14:00:00 -->
+        <symbol number="3" name="Delvis skyet" var="03d" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-23T08:00:00 -->
+        <windDirection deg="153.8" code="SSE" name="Sør-sørøst" />
+        <windSpeed mps="3.5" name="Lett bris" />
+        <temperature unit="celsius" value="14" />
+        <pressure unit="hPa" value="1027.2" />
+      </time>
+      <time from="2011-05-23T14:00:00" to="2011-05-23T20:00:00" period="2">
+        <!-- Valid from 2011-05-23T14:00:00 to 2011-05-23T20:00:00 -->
+        <symbol number="2" name="Lettskyet" var="02d" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-23T14:00:00 -->
+        <windDirection deg="197.5" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="4.2" name="Lett bris" />
+        <temperature unit="celsius" value="17" />
+        <pressure unit="hPa" value="1030.5" />
+      </time>
+      <time from="2011-05-23T20:00:00" to="2011-05-24T02:00:00" period="3">
+        <!-- Valid from 2011-05-23T20:00:00 to 2011-05-24T02:00:00 -->
+        <symbol number="3" name="Delvis skyet" var="03d" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-23T20:00:00 -->
+        <windDirection deg="198.4" code="SSW" name="Sør-sørvest" />
+        <windSpeed mps="3.6" name="Lett bris" />
+        <temperature unit="celsius" value="16" />
+        <pressure unit="hPa" value="1028.7" />
+      </time>
+      <time from="2011-05-24T02:00:00" to="2011-05-24T08:00:00" period="0">
+        <!-- Valid from 2011-05-24T02:00:00 to 2011-05-24T08:00:00 -->
+        <symbol number="1" name="Klarvær" var="mf/01n.79" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-24T02:00:00 -->
+        <windDirection deg="23.3" code="NNE" name="Nord-nordøst" />
+        <windSpeed mps="3.4" name="Lett bris" />
+        <temperature unit="celsius" value="13" />
+        <pressure unit="hPa" value="1030.2" />
+      </time>
+      <time from="2011-05-24T08:00:00" to="2011-05-24T14:00:00" period="1">
+        <!-- Valid from 2011-05-24T08:00:00 to 2011-05-24T14:00:00 -->
+        <symbol number="1" name="Klarvær" var="01d" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-24T08:00:00 -->
+        <windDirection deg="154.5" code="SSE" name="Sør-sørøst" />
+        <windSpeed mps="2.7" name="Svak vind" />
+        <temperature unit="celsius" value="14" />
+        <pressure unit="hPa" value="1030.2" />
+      </time>
+      <time from="2011-05-24T14:00:00" to="2011-05-24T20:00:00" period="2">
+        <!-- Valid from 2011-05-24T14:00:00 to 2011-05-24T20:00:00 -->
+        <symbol number="3" name="Delvis skyet" var="03d" />
+        <precipitation value="0.0" />
+        <!-- Valid at 2011-05-24T14:00:00 -->
+        <windDirection deg="182.0" code="S" name="Sør" />
+        <windSpeed mps="3.8" name="Lett bris" />
+        <temperature unit="celsius" value="17" />
+        <pressure unit="hPa" value="1030.2" />
+      </time>
+    </tabular>
+  </forecast>
+</weatherdata>

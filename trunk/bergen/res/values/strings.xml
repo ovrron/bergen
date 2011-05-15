@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Hva skjer i Bergen</string>
+    <string name="app_name">Hva skjer i Bergen?</string>
     
-    <string name="start_button_parking">     Ledig parkering</string>
-    <string name="start_button_weather">     Været</string>
-    <string name="start_button_cinema">     Kinoprogram</string>
-    <string name="start_button_concerts">     Konserter</string>
-    <string name="start_button_play">     Teater</string>
-    <string name="start_button_taxi">     Taxi</string>
+    <string name="start_button_parking">Ledig parkering</string>
+    <string name="start_button_weather">Været</string>
+    <string name="start_button_cinema">Kinoprogram</string>
+    <string name="start_button_concerts">Konserter</string>
+    <string name="start_button_play">Teater</string>
+    <string name="start_button_taxi">Taxi</string>
     
     <string name="parking_toast_bad">Nei og nei! </string>
     <string name="parking_wait_dialog_title">Laster siden</string>
@@ -24,7 +24,10 @@
 	<string name="weather_no_connection_title">Det ser ikke ut som du har nettilgang.</string>
     <string name="weather_no_connection_message">Avbryter</string>
     <string name="weather_no_connection_positive">OK</string>
-
+    <string name="weather_wait_dialog_title">Laster varsel</string>
+    <string name="weather_wait_dialog_message">Henter data fra yr.no</string>
+    <string name="weather_toast_bad">Nei og nei! </string>
+    
     <string name="cinema_toast_bad">Nei og nei! </string>
     <string name="cinema_wait_dialog_title">Laster siden</string>
     <string name="cinema_wait_dialog_message">Henter data fra bergenkino.no</string>
@@ -37,7 +40,12 @@
     <string name="taxi_norgestaxi_tlf">90177797</string> <!-- 08000 -->
     <string name="taxi_bryggentaxi_tlf">90177797</string> <!-- +4755708090 -->
     <string name="taxi_taxi1_tlf">90177797</string> <!-- 05501 -->
-
+    
+    <string name="taxi_bergentaxi_question_title">Bergen Taxi.</string>
+    <string name="taxi_bergentaxi_question_message">Bergen Taxi har to måter å bestille taxi. Ringe eller SMS.</string>
+    <string name="taxi_bergentaxi_question_positive">Ring</string>
+    <string name="taxi_bergentaxi_question_negative">SMS</string>
+    
     <string name="play_toast_bad">Nei og nei! </string>
     <string name="play_wait_dialog_title">Laster siden</string>
     <string name="play_wait_dialog_message">Henter data fra dns.no</string>
@@ -45,8 +53,9 @@
     
     <string name="concert_toast_bad">Nei og nei! </string>
     <string name="concert_wait_dialog_title">Laster siden</string>
-    <string name="concert_wait_dialog_message">Henter data fra konsertoversikt.no</string>
-    <string name="concert_url">http://konsertoversikt.no/konserter/bergen/</string>
+    <string name="concert_wait_dialog_message">Henter data fra brak.no</string>
+    <string name="concert_url">http://www.brak.no/kalender</string> <!-- http://konsertoversikt.no/konserter/bergen/ -->
+    
     
     
     

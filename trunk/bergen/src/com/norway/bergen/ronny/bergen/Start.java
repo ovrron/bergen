@@ -31,6 +31,8 @@ public class Start extends Activity {
     	Button buttonParking = (Button) findViewById(R.id.buttonParking);
     	buttonParking.setOnClickListener(new OnClickListener() {
 			
+
+    		
 			@Override
 			public void onClick(View v) {
 				if(ipAddress!=null) {
