@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class Cinema extends Activity {
-    /** Called when the activity is first created. */
-    @Override
+
+	@Override
     public void onCreate(Bundle savedInstanceState) {
 
     	super.onCreate(savedInstanceState);
@@ -29,23 +29,23 @@ public class Cinema extends Activity {
         waitDialog.setTitle(R.string.cinema_wait_dialog_title);
         waitDialog.setMessage(getResources().getString(R.string.cinema_wait_dialog_message));
         webView.setWebChromeClient(new WebChromeClient() {
-          public void onProgressChanged(WebView view, int progress) {
-        	  if(progress==100) {
-        		  if(waitDialog.isShowing()) {
-        			  waitDialog.hide();  
-        		  }
-        	  }
-        	  else {
-        		  if(!waitDialog.isShowing()) {
-        			  waitDialog.show();
-        		  }
-        	  }
-          }
+        	public void onProgressChanged(WebView view, int progress) {
+        		if(progress==100) {
+        			if(waitDialog.isShowing()) {
+        				waitDialog.hide();  
+        			}
+        		}
+        		else {
+        			if(!waitDialog.isShowing()) {
+        				waitDialog.show();
+        			}
+        		}
+        	}
         });
         webView.setWebViewClient(new WebViewClient() {
-          public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-        	  Toast.makeText(getBaseContext(), getResources().getString(R.string.cinema_toast_bad) + description, Toast.LENGTH_LONG).show();
-          }
+        	public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+        		Toast.makeText(getBaseContext(), getResources().getString(R.string.cinema_toast_bad) + description, Toast.LENGTH_LONG).show();
+        	}
         });
         webView.loadUrl(getResources().getString(R.string.cinema_url));
     }
