@@ -12,10 +12,10 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 public class Taxi extends Activity {
-
 	@Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
@@ -31,7 +31,6 @@ public class Taxi extends Activity {
     private void initButtons() {
     	ImageButton buttonBergenTaxi = (ImageButton) findViewById(R.id.imageButtonBergenTaxi);
     	buttonBergenTaxi.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				//Lytter for dialogknappene
@@ -46,6 +45,7 @@ public class Taxi extends Activity {
 		                	case DialogInterface.BUTTON_NEGATIVE:
 		                		SmsManager sm = SmsManager.getDefault();
 		                		sm.sendTextMessage(getResources().getString(R.string.taxi_bergentaxi_tlf), null, getResources().getString(R.string.taxi_bergentaxi_smscode), null, null);
+		                		Toast.makeText(getBaseContext(), getResources().getString(R.string.taxi_toast_sms_ok), Toast.LENGTH_LONG).show();
 		                		break;
 		                }
 		            }
@@ -64,25 +64,24 @@ public class Taxi extends Activity {
     	
     	ImageButton buttonNorgesTaxi = (ImageButton) findViewById(R.id.imageButtonNorgesTaxi);
     	buttonNorgesTaxi.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 		        Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+getResources().getString(R.string.taxi_norgestaxi_tlf)));
 		        startActivity(i);
 			}
 		});
+
     	ImageButton buttonBryggenTaxi = (ImageButton) findViewById(R.id.imageButtonBryggenTaxi);
     	buttonBryggenTaxi.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 		        Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+getResources().getString(R.string.taxi_bryggentaxi_tlf)));
 		        startActivity(i);
 			}
 		});    	
+    	
     	ImageButton buttonTaxi1 = (ImageButton) findViewById(R.id.imageButtonTaxi1);
     	buttonTaxi1.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 		        Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+getResources().getString(R.string.taxi_taxi1_tlf)));
