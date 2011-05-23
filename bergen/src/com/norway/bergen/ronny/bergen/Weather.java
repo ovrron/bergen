@@ -12,24 +12,15 @@ import java.util.regex.Pattern;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -43,7 +34,6 @@ import com.norway.bergen.ronny.bergen.helper.ParseYrForeCast;
 public class Weather extends Activity 
 {	
 	private static final String LOG_TAG = "Weather";
-	private PopupWindow pw = null;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,7 +71,6 @@ public class Weather extends Activity
         @Override
         protected void onPostExecute(Boolean result) {
             waitDialog.hide();
-            setValues();
         }
         
         @Override
@@ -95,13 +84,8 @@ public class Weather extends Activity
         protected void onProgressUpdate(Object... values) {
         	if(values[0]!=null) {
         		foreCast = (ForeCast) values[0];
-        		if(foreCast.getPlaceName()!=null) {
-            		detailTable.removeAllViews();
-            		setValues();
-        		}
-        		else {
-            		Toast.makeText(getBaseContext(), getResources().getString(R.string.weather_toast_bad) + " " + getResources().getString(R.string.weather_toast_bad_unknown_error), Toast.LENGTH_LONG).show();
-        		}
+        		detailTable.removeAllViews();
+        		setValues();
         	}
         	else {
         		String errorDetails = foreCastParser.getErrorDetails();
@@ -257,47 +241,4 @@ public class Weather extends Activity
             table.addView(textView);
         }
     }
-
-    @Override
-    //Oppretter menyen
-    public boolean onCreateOptionsMenu(Menu meny) {
-    	super.onCreateOptionsMenu(meny);
-    	meny.add("Om");
-    	return true;
-    }
-    
-    @Override
-    //Bruker har valgt et menyvalg
-    public boolean onOptionsItemSelected(MenuItem item) {
-    	if(item.getTitle().equals("Om")) {
-    		LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    	    pw = new PopupWindow(inflater.inflate(R.layout.popup, null, false), 100,100, true);
-    	    View v = pw.getContentView();
-    	    TextView tw = (TextView)v.findViewById(R.id.textViewPopUp);
-    	    tw.setText("test \n nye esgkjhsgjnøskjngsn sjgn sjngk sjgnkj nsgkjn g\nsgsgsgsg\nsdgsdg");
-//    	    pw.setOutsideTouchable(false);
-//    	    pw.setTouchInterceptor(new OnTouchListener() {
-//				@Override
-//				public boolean onTouch(View v, MotionEvent event) {
-//					pw.dismiss();
-//					return true;
-//				}
-//    	    });
-    	    pw.showAtLocation(this.findViewById(R.id.linearLayout1), Gravity.CENTER, 0, 0); 
-    	}
-    	return true;
-    }    
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        // Override back button
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (pw.isShowing()) {
-                pw.dismiss();
-                return false;
-            }
-        }
-        return super.onKeyDown(keyCode, event);
-    } 
 }
