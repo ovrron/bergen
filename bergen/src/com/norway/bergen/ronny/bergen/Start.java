@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -97,14 +98,15 @@ public class Start extends Activity {
 			@Override
 			public void onClick(View v) {
 				if(ipAddress!=null) {
-					startActivity(new Intent(v.getContext(),Cinema.class));	
+					Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.cinema_url))); 
+					startActivity(browser); 
+					//startActivity(new Intent(v.getContext(),Cinema.class));	
 				}
 				else {
 					//Lytter for dialogknappene
 					DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 			            public void onClick(DialogInterface dialog, int which) {
 			                switch (which) {
-			                	//Bruker har valgt å avslutte spillet
 			                	case DialogInterface.BUTTON_POSITIVE:
 			                		break;
 			                }
@@ -127,7 +129,9 @@ public class Start extends Activity {
 			@Override
 			public void onClick(View v) {
 				if(ipAddress!=null) {
-					startActivity(new Intent(v.getContext(),Concert.class));	
+					Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.concert_url))); 
+					startActivity(browser); 
+					//startActivity(new Intent(v.getContext(),Concert.class));	
 				}
 				else {
 					//Lytter for dialogknappene
@@ -159,7 +163,9 @@ public class Start extends Activity {
 			@Override
 			public void onClick(View v) {
 				if(ipAddress!=null) {
-					startActivity(new Intent(v.getContext(),Play.class));	
+					Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.play_url))); 
+					startActivity(browser); 
+					//startActivity(new Intent(v.getContext(),Play.class));	
 				}
 				else {
 					//Lytter for dialogknappene
